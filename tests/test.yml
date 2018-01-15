@@ -1,0 +1,10 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  become_user: root
+  remote_user: vagrant
+  gather_facts: yes
+  roles:
+    - role: jetbrains-licensing-server
+    - role: spec

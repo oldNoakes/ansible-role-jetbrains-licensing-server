@@ -1,0 +1,3 @@
+---
+- name: Run some kind of test
+  shell: echo "testing, testing... 1... 2... 3..."
