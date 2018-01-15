@@ -1,0 +1,13 @@
+.vagrant
+.idea
+*.iml
+*.iws
+*.ipr
+*.retry
+tests/roles/*
+!tests/roles/spec
+.artfw/downloads/*
+tests/docker/docker.rc
+tests/docker/docker.env
+tests/venv
+tests/test.yml.sample
