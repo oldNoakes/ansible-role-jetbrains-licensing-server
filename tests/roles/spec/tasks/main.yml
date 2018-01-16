@@ -17,6 +17,6 @@
     that:
       - jbls_user_home.stdout == "{{ jb_licensing_server_home }}"
       - jbls_running.rc == 0
-      - "Floating License Server" in jbls_endpoint.content
+      - "'Floating License Server' in jbls_endpoint.content"
       - jbls_endpoint.status == 200
 
