@@ -6,5 +6,7 @@ jb_licensing_server_package: license-server-installer.zip
 jb_licensing_server_install_base: /usr/local/jetbrains
 jb_licensing_server_home: "{{ jb_licensing_server_install_base }}/license-server"
 jb_licensing_server_path: licenseServer
-jb_licensing_server_virtualhost: jetbrains.licensing.nbnco.net.au
+jb_licensing_server_virtualhost: ""
+jb_licensing_server_listen_address: "0.0.0.0"
+jb_licensing_server_context: ""
 jb_licensing_server_port: 8080

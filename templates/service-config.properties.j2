@@ -1,0 +1,13 @@
+context=/{{ jb_licensing_server_context }}
+id=LicenseService
+kara.config=config/base.conf
+listen={{ jb_licensing_server_listen_address }}
+logs-dir={{ jb_licensing_server_home }}/logs
+org.eclipse.jetty.servlet.SessionCookie=JSESSIONID
+org.eclipse.jetty.servlet.SessionIdPathParameterName=jsessionid
+port={{ jb_licensing_server_port }}
+presentation-service-name=JetBrains License Service
+service-conf-folder={{ jb_licensing_server_install_base }}/conf
+smtp.ssl.trust=*
+temp-dir={{ jb_licensing_server_home }}/temp
+#jetty.virtualHosts.names=

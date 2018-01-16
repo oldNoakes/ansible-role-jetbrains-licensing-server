@@ -7,8 +7,16 @@
   shell: systemctl is-active --quiet jetbrains-license-server
   register: jbls_running
 
+- name: Verify licensing endpoint is listening
+  uri:
+    url: "http://{{ jb_licensing_server_listen_address }}:{{ jb_licensing_server_port }}/{{ jb_licensing_server_context }}"
+    return_content: yes
+  register: jbls_endpoint
+
 - assert:
     that:
       - jbls_user_home.stdout == "{{ jb_licensing_server_home }}"
       - jbls_running.rc == 0
+      - "Floating License Server" in jbls_endpoint.content
+      - jbls_endpoint.status == 200
 

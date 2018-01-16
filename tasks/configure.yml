@@ -1,0 +1,15 @@
+---
+- name: Setup service configuration
+  template:
+    src: service-config.properties.j2
+    dest: "{{ jb_licensing_server_home }}/conf/service-config.properties"
+    owner: "{{ jb_licensing_server_user }}"
+    group: "{{ jb_licensing_server_group }}"
+
+- name: inject virtualhost name when defined
+  lineinfile:
+    dest: "{{ jb_licensing_server_home }}/conf/service-config.properties"
+    regexp: '^jetty\.virtualHosts\.names='
+    line: "jetty.virtualHosts.names={{ jb_licensing_server_virtualhost }}"
+  when:
+    - jb_licensing_server_virtualhost != ""
