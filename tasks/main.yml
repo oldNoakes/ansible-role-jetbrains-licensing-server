@@ -1,0 +1,44 @@
+---
+- name: Create the JetBrains licensing server group
+  group:
+    name: "{{ jb_licensing_server_group }}"
+    state: present
+
+- name: Create the Jetbrains licensing server user
+  user:
+    name: "{{ jb_licensing_server_user }}"
+    group: "{{ jb_licensing_server_group }}"
+    home: "{{ jb_licensing_server_home }}"
+    state: present
+    createhome: no
+
+- name: Prepare the directory structure
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ jb_licensing_server_user }}"
+    group: "{{ jb_licensing_server_group }}"
+    mode: 0755
+  with_items:
+    - "{{ jb_licensing_server_install_base }}"
+    - "{{ jb_licensing_server_home }}"
+
+- name: Download and unarchive the licensing server
+  unarchive:
+    src: "{{ jb_licensing_server_download_url_base }}/{{ jb_licensing_server_package }}"
+    dest: "{{ jb_licensing_server_home }}"
+    owner: "{{ jb_licensing_server_user }}"
+    group: "{{ jb_licensing_server_group }}"
+    copy: no
+
+- name: Setup license server in systemd
+  template:
+    src: jetbrains-license-server.service.j2
+    dest: /etc/systemd/system/jetbrains-license-server.service
+    mode: 0755
+
+- name: Ensure licensing server is up and running
+  service:
+    name: jetbrains-license-server
+    state: started
+    enabled: yes

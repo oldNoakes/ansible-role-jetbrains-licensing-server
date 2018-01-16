@@ -1,3 +1,14 @@
 ---
-- name: Run some kind of test
-  shell: echo "testing, testing... 1... 2... 3..."
+- name: Verify jetbrains user exists with a home pointing at the server install base
+  shell: "getent passwd {{ jb_licensing_server_user }} | cut -d: -f6"
+  register: jbls_user_home
+
+- name: Verify jetbrains service is running
+  shell: systemctl is-active --quiet jetbrains-license-server
+  register: jbls_running
+
+- assert:
+    that:
+      - jbls_user_home.stdout == "{{ jb_licensing_server_home }}"
+      - jbls_running.rc == 0
+

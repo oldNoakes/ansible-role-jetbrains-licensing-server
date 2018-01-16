@@ -1,0 +1,10 @@
+---
+jb_licensing_server_user: jbserver
+jb_licensing_server_group: jbserver
+jb_licensing_server_download_url_base: https://download-cf.jetbrains.com/lcsrv
+jb_licensing_server_package: license-server-installer.zip
+jb_licensing_server_install_base: /usr/local/jetbrains
+jb_licensing_server_home: "{{ jb_licensing_server_install_base }}/license-server"
+jb_licensing_server_path: licenseServer
+jb_licensing_server_virtualhost: jetbrains.licensing.nbnco.net.au
+jb_licensing_server_port: 8080

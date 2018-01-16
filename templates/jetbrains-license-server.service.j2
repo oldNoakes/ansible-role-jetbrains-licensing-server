@@ -1,0 +1,13 @@
+[Unit]
+Description=Jetbrains Licensing Server
+After=network.target
+
+[Service]
+Type=forking
+User={{ jb_licensing_server_user }}
+ExecStart={{ jb_licensing_server_home }}/bin/license-server.sh start
+ExecStop={{ jb_licensing_server_home }}/bin/license-server.sh stop
+ExecReload={{ jb_licensing_server_home }}/bin/license-server.sh restart
+
+[Install]
+WantedBy=multi-user.target

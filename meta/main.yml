@@ -13,3 +13,4 @@ galaxy_info:
   - licensing-server
 dependencies:
 - { role: geerlingguy.java, java_packages: ['java-1.8.0-openjdk'] }
+- { role: kbrebanov.unzip }
