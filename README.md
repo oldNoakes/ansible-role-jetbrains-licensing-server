@@ -1,4 +1,4 @@
-# Maven Role
+# Jetbrains Licensing Server Role
 
 [![Build Status](https://travis-ci.org/oldNoakes/ansible-role-jetbrains-licensing-server.svg?branch=master)](https://travis-ci.org/oldNoakes/ansible-role-jetbrains-licensing-server)
 
